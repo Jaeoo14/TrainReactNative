@@ -1,26 +1,36 @@
-import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+/* eslint-disable prettier/prettier */
+import * as React from 'react';
+//import {StyleSheet, View, Text} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import HomeScreen from './components/HomeScreen';
+
+const Stack = createStackNavigator();
 
 const App = () => {
   return (
-    <View style={styles.body}>
-      <Text children="hello React Native" style={styles.title} />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="HomeScreen">
+        <Stack.Screen
+          name="HomeScreen"
+          component={HomeScreen}
+          options={{
+            title: 'HOME',
+            headerStyle: {
+              backgroundColor: '#1877f5',
+            },
+            headerTintColor: '#ffffff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              color: '#ffffff',
+            },
+          }}
+        />
+        {/* <Stack.Screen />
+        <Stack.Screen /> */}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  body: {
-    backgroundColor: '#ffffff',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: '#000000',
-  },
-});
 
 export default App;
